@@ -9,7 +9,7 @@ const CardPokemon = ({name,urlImg, id, types}:Pokemon) => {
     return(
         <StyledCard>
             <StyledCardBody color={PokemonTypeColors[types[0]].medium} >
-                <FavButton/>
+                <span><FavButton id={id} /></span>
                 <p># {id}</p>
                 <StyledCardCircle color={PokemonTypeColors[types[0]].light}/>
                 <StyledCardImg src={urlImg} alt={name} />

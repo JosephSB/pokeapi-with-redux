@@ -37,6 +37,12 @@ export const StyledCardBody = styled.div`
         top: 0;
         left: 0;
     }
+    span{
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 20;
+    }
 `
 export const StyledCardCircle = styled.div`
     width: 140px;
