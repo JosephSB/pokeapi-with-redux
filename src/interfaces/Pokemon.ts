@@ -1,4 +1,3 @@
-import { PokemonType } from "../types/PokemonTypes"
 
 export interface Pokemon {
     id: number
