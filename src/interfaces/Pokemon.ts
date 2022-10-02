@@ -4,6 +4,7 @@ export interface Pokemon {
     urlImg: string
     name: string
     types: string[]
+    favorite: boolean
 }
 
 export interface PokemonState {

@@ -1,18 +1,25 @@
+import { useAppDispatch } from '../../../store/pokemon.store';
+import { handleFavorite } from '../../../slices/pokemon.slice';
 import { StyledSvg } from './styles.js';
 
 interface props {
     id: number
+    isFav: boolean
 }
 
-const FavButton = ({id}:props) => {
+const FavButton = ({id,isFav}:props) => {
+    const dispatch = useAppDispatch();
 
     const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if(e.currentTarget.checked) e.currentTarget.classList.toggle("active")
+        if(e.currentTarget.checked){ 
+            e.currentTarget.classList.toggle("active")
+            dispatch(handleFavorite(id));
+        }
     }
 
     return (
         <StyledSvg>
-            <input type="checkbox" className='checkbox' id={"checkbox-"+id} onChange={handleChecked} />
+            <input type="checkbox" className={`checkbox ${isFav ? "active" : ""}`} id={"checkbox-"+id} onChange={handleChecked} />
             <label htmlFor={"checkbox-"+id}>
                 <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                     <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">

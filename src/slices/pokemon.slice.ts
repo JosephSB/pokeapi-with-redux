@@ -45,12 +45,15 @@ const pokemonSlice = createSlice({
         setLoading: (state, action) => {
             state.loading = action.payload;
         },
-        /*
-        addFavorite: (state, action) => {
-            //id
-            state
-
-        }
+        handleFavorite: (state, action) => {
+            const index = state.data.findIndex(item => item.id === action.payload);
+            if (index >= 0) {
+                const isFavorite = state.data[index].favorite;
+                state.data[index].favorite = !isFavorite;
+                if(!isFavorite) localStorage.setItem(`pokemon-fav-${state.data[index].id}`, JSON.stringify(!isFavorite))
+                else localStorage.removeItem(`pokemon-fav-${state.data[index].id}`)
+            }
+        },
         /*
         editTask: (state, action) => {
             const { id, title, description } = action.payload;
@@ -70,5 +73,5 @@ const pokemonSlice = createSlice({
     },
 });
 
-export const { addPokemons, setPokemons,setLoading/*, editTask, deleteTask */ } = pokemonSlice.actions;
+export const { addPokemons, setPokemons, setLoading,handleFavorite/*, editTask, deleteTask */ } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

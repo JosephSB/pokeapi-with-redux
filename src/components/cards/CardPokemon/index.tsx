@@ -4,12 +4,12 @@ import FavButton from "../../buttons/FavButton"
 import {StyledCard, StyledCardBody, StyledCardCircle, StyledCardFooter, 
     StyledCardFooterTypes, StyledCardImg,StyledCardFooterType} from "./styles"
 
-const CardPokemon = ({name,urlImg, id, types}:Pokemon) => {
+const CardPokemon = ({name,urlImg, id, types, favorite}:Pokemon) => {
 
     return(
         <StyledCard>
             <StyledCardBody color={PokemonTypeColors[types[0]].medium} >
-                <span><FavButton id={id} /></span>
+                <span><FavButton id={id} isFav={favorite} /></span>
                 <p># {id}</p>
                 <StyledCardCircle color={PokemonTypeColors[types[0]].light}/>
                 <StyledCardImg src={urlImg} alt={name} />

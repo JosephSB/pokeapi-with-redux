@@ -1,14 +1,8 @@
-import { compose, configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import pokemonSlice from '../slices/pokemon.slice'
-
 import { useDispatch, useSelector } from 'react-redux'
 import type { TypedUseSelectorHook } from 'react-redux'
 
-/*
-const composedEnhancers = compose(
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
-*/
 export const store = configureStore({
   reducer: {
     pokemons: pokemonSlice,
