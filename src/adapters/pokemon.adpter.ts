@@ -1,4 +1,5 @@
 import { AllPokemonsResp, DetailPokemonResp } from "../interfaces/Endpoints";
+import { PokemonIsFav } from "../utils/handleFavPokemonsInLS";
 
 export const AdaptPokemonToState = (data: AllPokemonsResp ) => {
     return {
@@ -10,12 +11,11 @@ export const AdaptPokemonToState = (data: AllPokemonsResp ) => {
 }
 
 export const AdaptDataPokemon = (data: DetailPokemonResp ) => {
-    let isFav = localStorage.getItem(`pokemon-fav-${data.id}`);
     return {
         id: data.id,
         urlImg: data.sprites.other["official-artwork"].front_default,
         name: data.name,
         types: data.types.map( (item)=> {return item.type.name} ),
-        favorite: isFav ? JSON.parse(isFav) : false
+        favorite: PokemonIsFav(data.id)
     }
 }

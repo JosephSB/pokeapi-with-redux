@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import InputSearchPokemons from "../../InputSearchPokemons";
 import {
     StyledHeader, StyledHeaderTop,StyledHeaderUl
@@ -7,11 +8,11 @@ const Header = () => {
     return(
         <StyledHeader>
             <StyledHeaderTop>
-                <h1><i className="fab fa-react"></i> POKEDUX</h1>
+                <Link to="/"><h1><i className="fab fa-react"></i> POKEDUX</h1></Link>
                 <nav>
                     <StyledHeaderUl>
                         <li>
-                            <a href=""><i className="fas fa-heart"></i>&nbsp;favs</a>
+                            <Link to="/favorites"><i className="fas fa-heart"></i>&nbsp;favs</Link>
                         </li>
                         <li>
                             <a href=""><i className="fas fa-gamepad"></i>&nbsp;play</a>

@@ -2,10 +2,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AdaptDataPokemon } from "../adapters/pokemon.adpter";
 import { Pokemon, PokemonState } from "../interfaces/Pokemon";
 import { getPokemons, getPokemonsByUrl } from "../services/pokemons.service";
+import { removeFavPokemonInLS, SaveFavPokemonInLS } from "../utils/handleFavPokemonsInLS";
 
 const initialState = {
     data: <Pokemon[]>[],
-    loading: false
+    loading: false,
+    settings: {limit: 0, size: 9}
 };
 
 export const fetchPokemonsWithDetails = createAsyncThunk(
@@ -50,9 +52,22 @@ const pokemonSlice = createSlice({
             if (index >= 0) {
                 const isFavorite = state.data[index].favorite;
                 state.data[index].favorite = !isFavorite;
-                if(!isFavorite) localStorage.setItem(`pokemon-fav-${state.data[index].id}`, JSON.stringify(!isFavorite))
-                else localStorage.removeItem(`pokemon-fav-${state.data[index].id}`)
+
+                const pokemon = {
+                    id: state.data[index].id,
+                    urlImg: state.data[index].urlImg,
+                    name: state.data[index].name,
+                    types: state.data[index].types,
+                    favorite: state.data[index].favorite
+                }
+
+                if(!isFavorite) SaveFavPokemonInLS(pokemon)
+                else removeFavPokemonInLS(state.data[index].id)
+                
             }
+        },
+        setSetting: (state, action) => {
+            state.settings = action.payload;
         },
         /*
         editTask: (state, action) => {
@@ -73,5 +88,5 @@ const pokemonSlice = createSlice({
     },
 });
 
-export const { addPokemons, setPokemons, setLoading,handleFavorite/*, editTask, deleteTask */ } = pokemonSlice.actions;
+export const { addPokemons, setPokemons, setLoading,handleFavorite,setSetting/*, editTask, deleteTask */ } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

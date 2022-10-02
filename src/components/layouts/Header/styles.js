@@ -16,6 +16,9 @@ export const StyledHeaderTop = styled.div`
         margin: 5px 0; 
         color: ${TEXT_COLOR_CONTRAST};
     }
+    a{
+        text-decoration: none;
+    }
     display: flex;
     justify-content: space-around;
     align-items: center;

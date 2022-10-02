@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit'
 import pokemonSlice from '../slices/pokemon.slice'
 import { useDispatch, useSelector } from 'react-redux'
 import type { TypedUseSelectorHook } from 'react-redux'
+import FavPokemonsSlice from '../slices/FavPokemons.slice'
 
 export const store = configureStore({
   reducer: {
     pokemons: pokemonSlice,
+    favorites: FavPokemonsSlice
   },
 })
 
