@@ -1,5 +1,20 @@
 export const TypePokemons = [
-    {id: 1,label: "Fuego" },
-    {id: 2,label: "Agua" },
-    {id: 3,label: "Planta" },
+    {id: 1,label: "normal" },
+    {id: 2,label: "fire" },
+    {id: 3,label: "fighting" },
+    {id: 4,label: "water" },
+    {id: 5,label: "flying" },
+    {id: 6,label: "grass" },
+    {id: 7,label: "poison" },
+    {id: 8,label: "electric" },
+    {id: 9,label: "ground" },
+    {id: 10,label: "psychic" },
+    {id: 11,label: "rock" },
+    {id: 12,label: "ice" },
+    {id: 13,label: "bug" },
+    {id: 14,label: "dragon" },
+    {id: 15,label: "ghost" },
+    {id: 16,label: "dark" },
+    {id: 17,label: "steel" },
+    {id: 18,label: "fairy" }
 ]

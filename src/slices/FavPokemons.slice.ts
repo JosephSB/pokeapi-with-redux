@@ -7,7 +7,7 @@ const initialState = {
 };
 
 
-const pokemonSlice = createSlice({
+const FavPokemonSlice = createSlice({
     name: "FavPokemons",
     initialState,
     reducers: {
@@ -18,5 +18,5 @@ const pokemonSlice = createSlice({
     },
 });
 
-export const { setFavPokemons } = pokemonSlice.actions;
-export default pokemonSlice.reducer;
+export const { setFavPokemons } = FavPokemonSlice.actions;
+export default FavPokemonSlice.reducer;
